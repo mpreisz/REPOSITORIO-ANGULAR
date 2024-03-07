@@ -8,16 +8,15 @@ import { PostService } from './post.service';
 export const POST_SERVICE_KEY = new InjectionToken<string>('POST_SERVICE_KEY');
 
 @NgModule({
-  providers: [PostService,
-    {provide: POST_SERVICE_KEY, useValue: 'https://www.omdbapi.com/?s=harry&p=1&apikey=3f24f265'}, // Mock value for MyInterface
+  declarations: [PostComponent, PostListComponent],
+  imports: [CommonModule, HttpClientModule],
+  exports: [PostComponent, PostListComponent],
+  providers: [
+    PostService,
+    {
+      provide: POST_SERVICE_KEY,
+      useValue: 'https://www.omdbapi.com/?s=harry&p=1&apikey=3f24f265',
+    }, // Mock value for MyInterface
   ],
-  declarations: [
-    PostComponent,
-    PostListComponent
-  ],
-  imports: [
-    CommonModule, HttpClientModule
-  ],
-  exports:[PostComponent, PostListComponent]
 })
-export class PostModule { }
+export class PostModule {}

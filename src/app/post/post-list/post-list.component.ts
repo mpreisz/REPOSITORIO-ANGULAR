@@ -11,7 +11,7 @@ export class PostListComponent{
   public posts$: Observable<Result>;
 
   constructor(private postService: PostService){
-    this.posts$ = postService.getAllPosts();
+    this.posts$ = this.postService.getAllPosts();
   }
 
 
