@@ -1,0 +1,12 @@
+ul {
+  width: 90%;
+  list-style: none;
+}
+
+li {
+  display: inline-block; /* Cambiar display a inline-block */
+  width: calc(25% - 15px); /* Calcula el ancho del 25% del contenedor y resta el espacio entre los elementos */
+  height: 100px;
+  margin-right: 15px; /* Agregar margen derecho para el espacio entre elementos */
+}
+
