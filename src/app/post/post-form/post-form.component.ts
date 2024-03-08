@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-post-form',
@@ -10,13 +11,43 @@ import { Router } from '@angular/router';
 export class PostFormComponent {
   constructor(private router: Router) {}
   postForm = new FormGroup({
-    Title: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    Title: new FormControl('', [Validators.required]),
     Year: new FormControl('', [Validators.required]),
     Poster: new FormControl('', [Validators.required]),
   });
-  //Hacer el de las pipes
-  public onSubmit(event: Event) {
-    event.preventDefault();
-    this.router.navigate(['post/list']);
+
+  public titleErrors$ = this.postForm.get('Title')!.statusChanges.pipe(
+    map((x) => {
+      const errors = [];
+      if (this.postForm.getError('required', ['Title'])) {
+        errors.push('Title is required');
+      }
+      return errors;
+    })
+  );
+
+  public yearErrors$ = this.postForm.get('Year')!.statusChanges.pipe(
+    map((x) => {
+      const errors = [];
+      if (this.postForm.getError('required', ['Year'])) {
+        errors.push('Year is required');
+      }
+      return errors;
+    })
+  );
+
+  public posterErrors$ = this.postForm.get('Poster')!.statusChanges.pipe(
+    map((x) => {
+      const errors = [];
+      if (this.postForm.getError('required', ['Poster'])) {
+        errors.push('Poster is required');
+      }
+      return errors;
+    })
+  );
+
+  public onSubmit() {
+    if (this.postForm.invalid) return;
+    //this.router.navigate(['post/list']);
   }
 }

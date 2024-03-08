@@ -10,8 +10,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
 const routes: Routes = [
+  { path: '**', redirectTo: 'list', pathMatch: 'full' },
   {
-    path: '',
+    path: 'list',
     component: PostListComponent,
   },
   //{ path: '', redirectTo: 'post/list' },
@@ -23,7 +24,7 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forChild(routes),
   ],
   exports: [PostComponent, PostListComponent, PostFormComponent],
   providers: [

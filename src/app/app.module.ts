@@ -8,7 +8,13 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CommonModule, RouterModule, AppRoutingModule, PostModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule,
+    AppRoutingModule,
+    PostModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
