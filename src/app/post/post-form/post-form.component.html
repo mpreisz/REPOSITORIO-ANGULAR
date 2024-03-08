@@ -1,0 +1,12 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit($event)">
+  <label for="title">Title:</label>
+  <input type="text" id="title" formControlName="Title">
+
+  <label for="year">Year:</label>
+  <input type="number" id="year" formControlName="Year">
+
+  <label for="poster">Poster:</label>
+  <input type="text" id="poster" formControlName="Poster">
+
+  <button type="submit">Enviar</button>
+</form>
