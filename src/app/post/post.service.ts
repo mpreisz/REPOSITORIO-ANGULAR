@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { POST_SERVICE_KEY } from './post.module';
+
+export const POST_SERVICE_KEY = new InjectionToken<string>('POST_SERVICE_KEY');
 
 export interface Result {
   Search: Post[];
@@ -21,9 +22,8 @@ export class PostService {
   ) {
     console.log(this.serviceUrl);
   }
-  //@Inject(POST_SERVICE_KEY) public serviceUrl: string
+
   public getAllPosts(): Observable<Result> {
-    return of({ Search: [] });
-    //return this.http.get(this.serviceUrl) as Observable<Result>;
+    return this.http.get(this.serviceUrl) as Observable<Result>;
   }
 }

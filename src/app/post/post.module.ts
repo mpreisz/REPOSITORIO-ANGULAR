@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostService } from './post.service';
-
-export const POST_SERVICE_KEY = new InjectionToken<string>('POST_SERVICE_KEY');
+import { POST_SERVICE_KEY, PostService } from './post.service';
+import { PostFormComponent } from './post-form/post-form.component';
 
 @NgModule({
-  declarations: [PostComponent, PostListComponent],
+  declarations: [PostComponent, PostListComponent, PostFormComponent],
   imports: [CommonModule, HttpClientModule],
   exports: [PostComponent, PostListComponent],
   providers: [
